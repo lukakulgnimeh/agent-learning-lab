@@ -17,6 +17,10 @@ Knowledge Organization (RAG)
 
 Agent Coordination
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr; 
+
+... work in progress
+
 <!-- (next) Professional Development Ecosystems (Codex, Claude Code, GitHub) -->
 
 [(next)Production Architecture]: #
