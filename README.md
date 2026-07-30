@@ -4,7 +4,7 @@ Welcome! This portfolio documents the learning processes involved in the develop
 ## Learning Journey
 **Goal:** Build an architectural understanding of modern AI systems by designing increasingly complex agent-based applications. 
 
-**Side quest:** Familiarize myself with the technical fundamentals, focusing on structure, organization and functions.
+**Side quest:** Familiarization with the technical fundamentals, focusing on structure, organization and functions.
 
 ## Learning Path
 System Integration

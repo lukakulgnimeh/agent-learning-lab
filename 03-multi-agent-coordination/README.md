@@ -67,19 +67,34 @@ Output structured review
 
 ## Key Challenges
 
-Several practical problems arose during development.
+During development several architectural challenges emerged.
 
-### 1. 
+### 1. Agent Communication
+
+The most important challenge was establishing reliable communication between the supervisor and specialized sub-agents. Since tool calls only expose explicitly defined parameters, robust message interfaces had to be designed to ensure every sub-agent received the correct task and context.
+
+### 2. Prompt Engineering
+
+The quality of the overall system strongly depended on the prompts of both the supervisor and the sub-agents. Responsibilities, expected outputs, and communication protocols had to be defined precisely to avoid hallucinations and ambiguous task execution.
+
+### 3. Memory and Session Management
+
+To make agent behavior reproducible, memory had to be isolated per workflow execution. This required careful session management to prevent information leakage between independent conversations while still allowing reasoning within a single execution.
+
+### 4. Orchestration
+
+Designing the supervisor's orchestration logic proved more difficult than expected. Deciding which agent to call, when additional analysis was required, and how to combine intermediate results became an architectural problem rather than a prompting problem.
 
 ## Result
 
-The developed agent
-
-- 
+The resulting system consists of a supervisor agent coordinating multiple specialized sub-agents with clearly separated responsibilities. The agents communicate through structured interfaces, produce traceable intermediate results, and generate a final assessment based solely on the collected expert opinions. Given the design decisions that were made, the output is good enough and satisfactory.
 
 ## Findings
+
+The project demonstrated that multi-agent systems are primarily an architectural challenge rather than a modeling challenge. Reliable collaboration depends on explicit communication protocols, clearly defined responsibilities, robust interfaces, and careful session management. The experiments also showed that architectural decisions often have a greater impact on system quality than the choice of the underlying language model, and that multiple specialized agents are generally easier to control than a single general-purpose agent.
 
 
 
 ## Core Reflection
 
+Instead of focusing primarily on how multiple agents communicate with one another, I automatically began to explore what kind of architecture enables shared understanding in the first place and how information, communication, and decision-making flows need to be organized. There is no automatic shared understanding among intelligent components.
