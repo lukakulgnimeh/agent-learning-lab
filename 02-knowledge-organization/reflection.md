@@ -3,10 +3,10 @@
 ### Learnings
 
 - The main problem is good RAG.
-- We actually contructed an agent since it decides for the right request, based on answers decides to call retriever tool again and decides on answer.
+- We actually constructed an agent since it decides for the right request, based on answers decides to call retriever tool again and decides on answer.
 - Does not work as intentionally designed: 
    - Retriever just returns top k results but searches everything.
-   - Fix would be to tell the agent metadata of injected documents. Then the request can be a specific restriced search with a following more directed search if necessary.
+   - Fix would be to tell the agent metadata of injected documents. Then the request can be a specific restricted search with a following more directed search if necessary.
 - Obtained skills:
   - PDF import
   - Text extraction
@@ -19,7 +19,7 @@
 
 **Conclusion:** The project should have been planned as two different components: the RAG-System as knowledge infrastructure and the agent who takes action based on this infrastructure.
 
-### Meta-level realizaitions and learnings
+### Meta-level realizations and learnings
 
 - Creation of increasingly structured system concepts prior to implementation.
 - Active use of architectural models as a thinking tool.

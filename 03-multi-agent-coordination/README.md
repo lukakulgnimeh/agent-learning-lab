@@ -8,7 +8,7 @@ This project investigates the interaction of multiple agents based on n8n. For t
 
 ## Goal 
 
-Developement of an assistant that reviews a given business idea. To do so, this supervisor agent orchestras sub-agents for market analysis, competition, technical realization, economy and customer perspective. Based on their expertise and its own evaluation, the idea should be put into a broader context and a review is presented.
+Development of an assistant that reviews a given business idea. To do so, this supervisor agent orchestras sub-agents for market analysis, competition, technical realization, economy and customer perspective. Based on their expertise and its own evaluation, the idea should be put into a broader context and a review is presented.
 
 The discussion focuses in particular on the following questions:
 

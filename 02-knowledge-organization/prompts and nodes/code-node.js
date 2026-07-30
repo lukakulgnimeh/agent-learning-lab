@@ -1,3 +1,5 @@
+//Please note that this code was created with the help of AI, as I am still in the process of learning JavaScript.
+
 // Input aus Extract from File
 const input = $input.first().json;
 

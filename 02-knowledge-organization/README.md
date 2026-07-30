@@ -8,7 +8,7 @@ This project investigates the development of a Retrieval-Augmented Generation (R
 
 ## Goal
 
-Development of an assistant that responds exclusively to provided documents and cites every statement in a traceable manner, including the page number. Learning how to provide the (un-)organized documents in the first place is the main subgoal.
+Development of an assistant that responds exclusively to provided documents and cites every statement in a traceable manner, including the page number. Learning how to provide the (un-)organized documents in the first place is the main sub-goal.
 
 The discussion focuses in particular on the following questions:
 

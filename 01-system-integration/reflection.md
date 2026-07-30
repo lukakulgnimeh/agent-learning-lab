@@ -21,4 +21,4 @@
 
 ## The essence:
 
-Don't build an agent when a workflow is enough. First observe the structure of the problem and then decide on the architectur. And I really loved thinking about the kind of system that is indeed needed - and how the system should be adapted in the construction to match appearing difficulties like a too weak llm. How responsibilities and tasks can be seperated and viewed as components.
+Don't build an agent when a workflow is enough. First observe the structure of the problem and then decide on the architecture. And I really loved thinking about the kind of system that is indeed needed - and how the system should be adapted in the construction to match appearing difficulties like a too weak llm. How responsibilities and tasks can be separated and viewed as components.

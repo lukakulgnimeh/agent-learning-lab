@@ -35,7 +35,7 @@ Output: generate and output summarized evaluation of the business idea
 
 ## Failure Mode and Effects Analysis (FMEA)
 
-| Potential Failure Modes | Effects | Severity, Occurrence, Detection | Risk Prority Number (RPN) |
+| Potential Failure Modes | Effects | Severity, Occurrence, Detection | Risk Priority Number (RPN) |
 | ----------------------- | ------- | - | - |
 | dependency of sub-agents | questions from sub-agent to supervisor | 
 | missing source of information and evidence | unreliable or hallucinated information | 7, 10, 1 | 70
