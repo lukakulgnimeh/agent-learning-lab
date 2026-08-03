@@ -48,6 +48,10 @@ If something fails, the system must respond appropriately.
 
 If components remain interchangeable, it will be possible later on to replace them with a different LLM, a different retriever, or a different database without major modifications.
 
-### 13 - Architecture follows the problem, not the technology
+### Make architectural evolution visible
+
+Instead of documenting only the final state, preserve important intermediate design decisions.
+
+### 14 - Architecture follows the problem, not the technology
 
 Which architecture solves the problem most easily and which technology suffices?

@@ -6,11 +6,9 @@
 
 **Solution:** Let the agent decide on the tool order and number of calls.
 
-**Advantages:**
-- follow reasoning of the agents llm
+**Advantage:** follow reasoning of the agents llm
 
-**Limitations:**
-- might miss potential of some tools (probably more of a problem with the prompt)
+**Limitation:** might miss potential of some tools (probably more of a problem with the prompt)
 
 
 ## 02 - Memory

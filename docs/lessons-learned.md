@@ -64,3 +64,11 @@ Example: A perfect prompt for a subagent can unnecessarily restrict the supervis
 
 ### Every new component also increases maintenance costs.
 Therefore, only add it if it provides clear added value.
+
+
+### Documentation is part of the architecture.
+A good architecture is not only implemented, it is communicated. Design decisions become reusable only when they are documented.
+
+
+### Version history documents learning, not only code.
+Meaningful commits create a narrative of architectural evolution. Version control is a record of decisions, not just file changes.
