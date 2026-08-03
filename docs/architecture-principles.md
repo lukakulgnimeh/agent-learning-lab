@@ -48,7 +48,7 @@ If something fails, the system must respond appropriately.
 
 If components remain interchangeable, it will be possible later on to replace them with a different LLM, a different retriever, or a different database without major modifications.
 
-### Make architectural evolution visible
+### 13 - Make architectural evolution visible
 
 Instead of documenting only the final state, preserve important intermediate design decisions.
 

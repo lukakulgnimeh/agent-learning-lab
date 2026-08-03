@@ -1,6 +1,6 @@
 ## Learnings:
 
-* I realized that the agents follows a strict workflow and is actually not an agent anymore: It is triggered by a chat message such as “What should I wear today?” or automatically every morning at 6 a.m.. It then checks the weather via an HTTP request to MeteoBlue and looks up a Docs document that lists the wardrobe. It then outputs a message regarding the weather and the resulting outfit recommendation, which is formatted into a fixed JSON format using the following code node, and an email is sent afterwards in a standardized format.
+* I realized that the agent follows a strict workflow and is actually not an agent anymore: It is triggered by a chat message such as “What should I wear today?” or automatically every morning at 6 a.m.. It then checks the weather via an HTTP request to MeteoBlue and looks up a Docs document that lists the wardrobe. It then outputs a message regarding the weather and the resulting outfit recommendation, which is formatted into a fixed JSON format using the following code node, and an email is sent afterwards in a standardized format.
 
 * So with all trade-offs I had to include to not overwhelm the agent, I more or less obtained an AI workflow, where the LLM just gets a fixed task. But it does not take actions! So we could just replace the node by an llm-chain node. 
 

@@ -32,7 +32,7 @@ The discussion focuses in particular on the following questions:
 ## Project Structure
 Following the **commit-history**, the project is structured as follows:
 - Initial drafts for the **architecture** (including an exemplary **Failure Mode and Effects Analysis**) as well as a conception for intentional design **decisions** and **evaluation** were documented in the respective files.
-- The construction is documented in the **workflow** and **prompts and nodes** folders. Adjustments lead to an update of the **decisions** file.
+- The construction is documented in the **workflow** and **prompts and nodes** folders. Note that these are written in German, since I didn’t want to lose my train of thought by searching for perfect phrasing. Adjustments lead to an update of the **decisions** file.
 - Finally, **evaluation** and **reflection** took part in the respective files.
 
 ## Architecture (sketch)
