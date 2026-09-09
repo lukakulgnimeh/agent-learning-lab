@@ -106,3 +106,51 @@ Is there a suitable alternative for the black sweatshirt jacket?
 Yes—the blue fleece is the best alternative: it adds warmth and handles the wind well. For possible rain, still take a waterproof outer layer if you have one.
 
 A blue, ochre, or orange sweater would also work, but the fleece is more practical for the forecast.
+
+
+---
+---
+
+## EXPERIMENT B
+
+Continue with Experiment B, see also experiments.md.
+
+The goal is to investigate how the weather subagent obtains external weather information and how tool usage works inside a delegated subagent.
+
+For a clothing request, delegate the weather assessment to the weather subagent as before. Use the existing available web/weather capability. Do not implement a custom weather API or add unnecessary infrastructure.
+
+After completing the task, report what actually happened during execution:
+
+- Which agent decided to delegate the weather task?
+- Which agent decided to use the external information source?
+- Which agent actually used the tool?
+- What information was returned to the supervisor?
+- Which agent interpreted the weather in clothing terms?
+
+Please distinguish between actions that were explicitly required by the project instructions and actions that you decided to take during execution.
+
+---
+---
+
+
+((I’ll run Experiment B with the continuing Berlin-for-tomorrow clothing scenario, using a weather subagent and the available weather capability. I’m also consulting the Codex documentation guidance because the experiment examines Codex’s delegation and tool-use model; I’ll then record the observed execution in the experiment log.))
+
+((I’ll obtain Berlin’s forecast for tomorrow and return only a clothing-relevant weather assessment to the supervisor.
+Im Web gesucht nach Berlin weather forecast tomorrow September 5 2026
+Agent aktualisiert
+Weather assessment delivered to the supervisor.))
+
+
+Experiment B is complete and recorded in [experiments.md](D:\Luka\Weather Multi Agent\docs\experiments.md).
+
+For Berlin tomorrow: wear a T-shirt, the blue fleece, and blue straight-leg jeans. Use closed water-resistant shoes and bring a waterproof shell if available. The assessment was cool (about 12–13°C) early/late, around 19–20°C later, breezy, with possible showers.
+
+What happened:
+
+- **Delegation decision:** The supervisor delegated the task. This was explicitly required by both your request and the project skill/`AGENTS.md` when weather is relevant.
+- **External-source decision:** Obtaining external weather data was explicitly required of the weather specialist. The specialist made the execution-level decision to use web search after its initial structured-weather attempt returned no valid response.
+- **Tool user:** The weather specialist actually used the delegated `web__run` web-search capability. The supervisor did not make the weather lookup.
+- **Result returned:** A compact assessment: temperature range, early brightness, possible afternoon showers, gusty westerly wind, and the need for layers, rain protection, and closed water-resistant footwear.
+- **Clothing interpretation:** The weather specialist interpreted forecast conditions into general clothing implications, as required by the project instructions. The supervisor then interpreted those implications against `wardrobe.md` and selected the specific outfit.
+
+Codex’s delegated agents make their own model and tool calls and return a summary for the main task to combine, matching the observed execution here. [Official OpenAI documentation](https://learn.chatgpt.com/de-DE/docs/agent-configuration/subagents)
