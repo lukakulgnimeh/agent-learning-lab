@@ -55,3 +55,65 @@ The geocoding step was also identified as an important architectural component. 
 Finally, the JSON-RPC communication mechanism was examined in detail. The MCP server receives messages through `stdin` and sends protocol responses through `stdout`, while diagnostic output is written to `stderr`. Because incoming data streams do not guarantee that a complete JSON message arrives in a single chunk, the server maintains a buffer and processes complete newline-delimited messages only. Incomplete messages remain in the buffer until the next chunk arrives. This chunk handling is therefore essential for reliable stream-based communication and prevents incomplete JSON from being processed accidentally.
 
 Overall, examining the server implementation demonstrated the importance of clear encapsulation. The MCP tool provides a stable interface to the agent, while protocol handling, routing, API logic, geocoding, HTTP requests, and response normalization remain hidden behind the server boundary. This separation makes the capability easier to understand, modify, reuse, and extend without exposing unnecessary implementation details to the agent.
+
+
+## Experiment D — authenticated API as a custom MCP tool
+
+**Remark.** For this experiment, Node.js LTS had to be installed locally using the Windows installer from their website. Afterwards, PowerShell was used to navigate to the project folder and execute `npm.cmd install`, which reads `package.json` and installs the declared dependencies. The existing public MCP server had previously worked without a local Node.js installation, as Codex apparently provided Node.js within its own runtime environment. However, the new implementation required `dotenv` as a project dependency, making a local Node.js/npm installation necessary. Similar to `.env`, the generated `node_modules/` directory was added to `.gitignore`.
+
+**Purpose.** This experiment aims to understand how an external API requiring authentication can be integrated as a custom MCP tool and how credentials are separated from agent instructions, source code, and project configuration. It also investigates whether the resulting tool can be discovered and used by the existing agent architecture in the same way as the public weather tool.
+
+**Setup.** A second local stdio MCP server, `weather-auth-mcp.mjs`, was implemented alongside the existing public Open-Meteo server. The new server closely reused the structure, JSON-RPC communication, tool declaration, validation, error handling, stdin buffering, Open-Meteo geocoding, and normalized output format of the original implementation. The main difference was the authenticated forecast request to the meteoblue API.
+
+The API credential was stored locally in a `.env` file and excluded from version control through `.gitignore`. A committed `.env.example` documented the required environment variable without containing the actual credential. The MCP server used `dotenv` to load the API key into `process.env.METEOBLUE_API_KEY`, keeping the credential outside of the source code, agent prompts, MCP schema, and Codex configuration.
+
+The `.codex/config.toml` configuration was also adjusted to remove the previously hard-coded absolute working directory and to register the new `weather_auth` MCP server using a relative script path. The authenticated server resolved its `.env` file relative to its own source location, making the credential setup independent of the current working directory.
+
+The new `get_meteoblue_forecast(city, date)` tool first reused Open-Meteo geocoding to convert the requested city into coordinates. These coordinates were then used for an authenticated HTTPS request to meteoblue's `basic-1h_basic-day` endpoint. The server selected the requested date from the returned forecast data and mapped the result into a normalized format comparable to the existing public weather tool.
+
+Finally, `SKILL.md` was updated so that weather-related requests would prefer the authenticated meteoblue tool before considering other available weather capabilities.
+
+**Expected behavior.** For a weather-dependent clothing request, the supervisor should delegate the weather task to the specialized weather subagent. The subagent should use the authenticated `get_meteoblue_forecast` MCP tool, which causes Codex to communicate with the local MCP server. The server should load the API credential internally from `.env`, perform the geocoding and authenticated HTTPS request, normalize the result, and return it to the subagent without exposing the credential.
+
+The weather specialist should interpret the returned forecast into clothing-relevant implications and return a concise assessment to the supervisor. The supervisor should then combine this assessment with `wardrobe.md` to produce the final clothing recommendation.
+
+**Actual observations/results.** After creating the `.env` file, installing the required `dotenv` dependency, and restarting Codex, the authenticated `get_meteoblue_forecast` MCP tool was successfully discovered and called directly. The meteoblue API returned a normalized forecast result for Berlin, and the corresponding API request could independently be verified in the meteoblue API key manager.
+
+After updating `SKILL.md`, a normal clothing request for Berlin was submitted. The supervisor delegated the weather task to a specialized subagent, which successfully used the authenticated MCP tool and returned a clothing-relevant weather assessment to the supervisor. The supervisor then consulted `wardrobe.md` and generated the final outfit recommendation.
+
+An additional request for Berlin two days in the future also returned a valid forecast with different weather values. This showed that the configured meteoblue endpoint and MCP server were capable of handling future dates rather than being limited to the current day. The request therefore confirmed that the server correctly processed the `date` parameter and selected forecast data for the requested date.
+
+The experiment successfully demonstrated the complete authenticated tool flow:
+
+`.env` → `dotenv` → `process.env.METEOBLUE_API_KEY` → local MCP server → authenticated HTTPS request → normalized MCP result → weather subagent → supervisor → clothing recommendation.
+
+**Conclusion/lesson learned.** The transfer of the architecture from Experiment C to an authenticated external API was successful. The experiment demonstrated that authentication can be integrated into an MCP-based tool architecture without exposing credentials to the agent itself. Conceptually, the authenticated HTTP request performs a similar role to an authenticated HTTP Request node in n8n, but the implementation is encapsulated behind an MCP tool instead of being directly represented in the workflow.
+
+The major architectural decision concerned how to store and provide the API key. Possible approaches included hard-coding the key into the MCP server, manually setting it as an environment variable in the terminal for each session, exposing it to the agent, or storing it locally while avoiding unnecessary additional infrastructure. The chosen approach was to use a local `.env` file together with `dotenv`. The real API key remains outside the source code and Git repository, while `.env.example` documents which configuration variable is required. The MCP server loads the credential at runtime and accesses it internally through `process.env`.
+
+This resulted in a clear separation of responsibilities:
+
+```text
+Agent
+  → decides whether to use the tool
+
+MCP tool
+  → provides a stable interface
+
+MCP server
+  → implements the API integration
+  → loads and handles the credential
+
+.env
+  → stores the local secret
+```
+
+This encapsulation is one of the main advantages of the architecture. The agent can use `get_meteoblue_forecast` without knowing how the HTTP request is constructed or where the API key is stored. The credential does not need to appear in prompts, skill instructions, tool schemas, tool results, or the agent context. From the agent's perspective, the authenticated and unauthenticated weather tools remain similar capabilities with clearly defined interfaces.
+
+The experiment also required a better understanding of the local Node.js environment and package management. Although the previous MCP server had apparently been executable within the Codex environment, the new implementation introduced the external `dotenv` dependency. This required installing Node.js and npm locally, creating a `package.json` to declare dependencies, and installing them into the project. `package-lock.json` additionally records the resolved dependency versions to improve reproducibility. The installed `node_modules` directory, like the real `.env` file, must not be committed and therefore belongs in `.gitignore`.
+
+Portability became another important architectural consideration. The original MCP configuration contained an absolute working-directory path, making the project dependent on its local location. Removing this path allowed the MCP server configuration to use relative script paths instead. The authenticated server additionally resolves the `.env` file relative to its own source location rather than relying on the current working directory. This makes the project easier to clone, move, and reproduce on another machine.
+
+The experiment therefore demonstrated that credential handling is not merely an implementation detail. It affects architecture, security, portability, reproducibility, and observability. A well-designed MCP server provides a stable boundary between an autonomous agent and external infrastructure: the agent decides *when* a capability should be used, while the MCP server controls *how* the external request is executed and how sensitive credentials are handled.
+
+Finally, `.gitignore` became particularly important. It separates reproducible project structure from machine-specific or secret information. Files such as `.env` and `node_modules` are necessary for local execution but should not become part of the repository, whereas files such as `.env.example`, `package.json`, and `package-lock.json` document how another user can recreate the required environment without receiving the actual credentials.

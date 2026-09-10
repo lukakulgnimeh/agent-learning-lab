@@ -13,33 +13,40 @@ If not already done, a supervisor can ask his subagent for the weather forecast:
 Furthermore, we want to investigate how tools are used by Codex's (sub-)agent and which structure is needed to be implemented. For example in case of simple web search, external API access and how Codex handles authentication. 
 
 ## Project Structure
-Following the **commit-history**, the project is structured as follows, Codex having access only to the weather-multi-agent folder. The experiment.md file documents the progress of this project in detail and is the most important log for the in depth project progress and observations. This README and files in this folder summarize the most important observations.
+Following the **commit-history**, the project is structured as follows, Codex having access only to the weather-multi-agent folder. The `experiment.md` file documents the progress of this project in detail and is the most important log for the in depth project progress and observations. This `README.md` and files in this folder summarize the most important observations.
 
-- README.md
-- decisions.md
-- evaluation.md
-- reflection.md
-- prompt-history.md
-- Weather Multi Agent/
-    - AGENTS.md (tells the agent in the loop about the agentic structure and tasks)
-    - README.md (contains project overview: initial draft of this README)
-    - wardrobe.md (contains a list of pieces of clothing)
-    - skills/
-        - clothing-recommendation/
-            - SKILL.md (contains specialized instructions how to deal with clothing recommendation tasks)
-    - docs/
-        - architecture.md (Codex generated this from the rest to tell the agent in the loop a concise structure)
-        - experiments.md (logs the steps involved to achieve the goal; Codex created first draft for setup and expected behavior from assignments in prompt, while we added observations and conclusions afterwards)
-    - .codex/
-        - config.toml (Experiment C: for Codex to discover MCP-server)
-    - tools/
-        - weather-mcp.mjs (Experiment C: the custom MCP-server)
+- `README.md`
+- `decisions.md`
+- `evaluation.md`
+- `reflection.md`
+- `prompt-history.md`
+- `Weather Multi Agent/`
+    - `AGENTS.md` *(defines the supervisor/weather-specialist responsibilities)*
+    - `README.md` *(contains project overview: initial draft of this README)*
+    - `wardrobe.md` *(contains a list of pieces of clothing)*
+    - `skills/`
+        - `clothing-recommendation/`
+            - `SKILL.md` *(contains specialized instructions how to deal with clothing recommendation tasks)*
+    - `docs/`
+        - `architecture.md` *(Codex generated this from the rest to tell the agent in the loop a concise structure)*
+        - `experiments.md` *(logs the steps involved to achieve the goal; Codex created first draft for setup and expected behavior from assignments in prompt, while we added observations and conclusions afterwards)*
+    - `.codex/`
+        - `config.toml` *(Experiment C and D: for Codex to discover and start MCP-servers)*
+    - `tools/`
+        - `weather-mcp.mjs` *(Experiment C: the custom MCP-server exposing forecast tool)*
+        - `weather-auth-mcp.mjs` *(Experiment D: new adapted MCP server; obtains its authentication key from the process environment)*
+    - `package.json` *(Experiment D:  minimal Node project declaration with dotenv as a dependency)*
+    - `package-lock.json` *(Experiment D: lock the installed dotenv version for reproducibility)*
+    - `.env.example` *(Experiment D: non-secret key documentation template)*
+    - `.gitignore` *(Experiment D: ignore .env and any other local secret files for configuration)*
+    - `.env` *(Experiment D: secret key documentation)*
+    - `node_modules/dotenv/..` *(Experiment D: executes .env key call inside the Node MCP process)*
 
 ## Architecture (sketch)
 
-The following architecture illustrates the dependencies at the agent level. In Experiments A and B, the actual collection of weather data is nothing special, but especially for Experiments C and D the architectural details of the request are worth noting. These details can be found in the architecture.md file and further explanations are included in the experiments.md file.
+The following architecture illustrates the dependencies at the agent level. In Experiments A and B, the actual collection of weather data is nothing special, but especially for Experiments C and D the architectural details of the forecast HTTP request are worth noting. These details can be found in the `architecture.md` file and further explanations are included in the `experiments.md` file.
 
-Natural-language-request: user's business idea 
+Natural-language-request: user's clothing request
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;
 

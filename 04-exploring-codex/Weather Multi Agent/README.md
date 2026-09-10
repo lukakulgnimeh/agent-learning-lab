@@ -28,11 +28,19 @@ Furthermore, we want to investigate how tools are used by Codex's (sub-)agent an
         - config.toml
     - tools/
         - weather-mcp.mjs
+        - weather-auth-mcp.mjs
+    - package.json
+    - package-lock.json
+    - .env.example
+    - .gitignore
+    - .env
+    - node_modules/dotenv/..
+
 
 
 ## Architecture (sketch)
 
-Natural-language-request: user's business idea 
+Natural-language-request: clothing request
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&darr;
 

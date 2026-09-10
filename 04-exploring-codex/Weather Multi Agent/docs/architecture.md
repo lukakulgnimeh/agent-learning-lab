@@ -41,3 +41,29 @@ Codex / weather subagent
 
 5. **Result flow**  
    The MCP server returns structured/text tool output to Codex. The weather specialist sees that result in its tool context, turns it into a concise clothing assessment, and returns that summary to the supervisor.
+
+## Further expanding the architecture: adding an adapted MCP tool for external authenticated API access
+
+As before, the external API access is realized via a Node.js process. Additionally, the new authenticated MCP server `weather-auth-mcp.mjs` can load `.env` (the authentication key) during its own startup, dotenv then populates that process’s process.env and nothing needs to be passed through the agent, MCP schema, or Codex configuration as a credential.
+
+```text
+Codex (Supervisor or weather specialist)  
+  ↓  
+get_meteoblue_forecast MCP tool  
+  ↓  
+weather-auth-mcp.mjs  
+  ↓  
+dotenv loads repository-local .env
+  ↓  
+process.env / METEOBLUE_API_KEY is loaded  
+  ↓  
+HTTP request Open-Meteo geocoding API  
+  ↓  
+Authenticated HTTP request meteoblue API 
+  ↓  
+Normalized weather result  
+  ↓  
+MCP tool result  
+  ↓  
+Codex
+```
