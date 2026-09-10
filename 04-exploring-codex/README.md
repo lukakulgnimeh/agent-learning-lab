@@ -14,9 +14,10 @@ Furthermore, we want to investigate how tools are used by Codex's (sub-)agent an
 
 ## Project Structure
 Following the **commit-history**, the project is structured as follows, Codex having access only to the weather-multi-agent folder. The experiment.md file documents the progress of this project in detail and is the most important log for the in depth project progress and observations. This README and files in this folder summarize the most important observations.
+
 - README.md
-- architecture.md
 - decisions.md
+- evaluation.md
 - reflection.md
 - prompt-history.md
 - Weather Multi Agent/
@@ -29,8 +30,14 @@ Following the **commit-history**, the project is structured as follows, Codex ha
     - docs/
         - architecture.md (Codex generated this from the rest to tell the agent in the loop a concise structure)
         - experiments.md (logs the steps involved to achieve the goal; Codex created first draft for setup and expected behavior from assignments in prompt, while we added observations and conclusions afterwards)
+    - .codex/
+        - config.toml (Experiment C: for Codex to discover MCP-server)
+    - tools/
+        - weather-mcp.mjs (Experiment C: the custom MCP-server)
 
 ## Architecture (sketch)
+
+The following architecture illustrates the dependencies at the agent level. In Experiments A and B, the actual collection of weather data is nothing special, but especially for Experiments C and D the architectural details of the request are worth noting. These details can be found in the architecture.md file and further explanations are included in the experiments.md file.
 
 Natural-language-request: user's business idea 
 

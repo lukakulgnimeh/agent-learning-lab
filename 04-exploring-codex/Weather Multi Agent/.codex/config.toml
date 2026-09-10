@@ -1,0 +1,4 @@
+[mcp_servers.weather]
+command = "node"
+args = ["tools/weather-mcp.mjs"]
+cwd = "D:\\Luka\\Weather Multi Agent"

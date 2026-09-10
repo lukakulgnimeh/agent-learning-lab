@@ -6,9 +6,11 @@ Moving from n8n to a different agentic ecosystem, we investigate which way of th
 
 ## Goal
 
-Exploring Codex to understand its underlying architecture, strengths and weaknesses as well as differences to n8n. To do so, we construct a two-agent system realizing the problem of project 01, i.e. providing a clothing suggestion for the day based on the weather and contents of a wardrobe. If not already done, a supervisor can ask his subagent for the weather forecast: the subagent gathers weather information via an http request and puts it into a general perspective regarding clothing suggestions like light summer outfit. After combining this expertise with the given wardrobe, the supervisor then selects a suitable clothing suggestion.
+Exploring Codex to understand its underlying architecture, strengths and weaknesses as well as differences to n8n. To do so, we construct a two-agent system realizing the problem of project 01, i.e. providing a clothing suggestion for the day based on the weather and contents of a wardrobe. 
 
-Furthermore, we want to realize the task of the supervisor via an underlying skill. This would allow for extended use of the same agent, for example, by adding another skill to recommend running gear that also takes trail maps into account.
+If not already done, a supervisor can ask his subagent for the weather forecast: the subagent gathers weather information via HTTP request and puts it into a general perspective regarding clothing suggestions like light summer outfit. After combining this expertise with the given wardrobe, the supervisor then selects a suitable clothing suggestion. We want to realize the task of the supervisor via an underlying skill. This would allow for extended use of the same agent, for example, by adding another skill to recommend running gear that also takes trail maps into account.
+
+Furthermore, we want to investigate how tools are used by Codex's (sub-)agent and which structure is needed to be implemented. For example in case of simple web search, external API access and how Codex handles authentication. 
 
 ## Project Structure
 
@@ -20,8 +22,12 @@ Furthermore, we want to realize the task of the supervisor via an underlying ski
         - clothing-recommendation/
             - SKILL.md
     - docs/
-        - architecture.md 
+        - architecture.md
         - experiments.md
+    - .codex/
+        - config.toml
+    - tools/
+        - weather-mcp.mjs
 
 
 ## Architecture (sketch)
