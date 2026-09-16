@@ -55,3 +55,15 @@ Instead of documenting only the final state, preserve important intermediate des
 ### 14 - Architecture follows the problem, not the technology
 
 Which architecture solves the problem most easily and which technology suffices?
+
+### 15 - The developer designs the environment, the agent navigates it
+
+The developer defines instructions, context and capabilities, the agent decides at runtime how these are combined.
+
+### 16 - Capabilities should be exposed through stable interfaces
+
+Skills, tools and MCP-servers should be exposed to the agent through stable interfaces while the technical implementation is changeable. 
+
+### 17 - Autonomy is an architectural trade-off
+
+Increased autonomy and flexibility come at the cost of less deterministic execution paths and therefore higher requirements on observability, debugging and controlled interfaces.

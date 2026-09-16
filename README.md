@@ -6,6 +6,8 @@ Welcome! This repository documents my transition from learning AI technologies t
 
 **Side quest:** Familiarization with the technical fundamentals, focusing on structure, organization and functions.
 
+The first projects build an understanding of agent architecture from the system-building perspective. Later projects shift towards understanding the architectural assumptions embedded in the ecosystems used to build these systems.
+
 ## Learning Path
 
 The projects are intentionally ordered. Rather than increasing technical complexity, each project addresses a more fundamental organizational question.
@@ -21,20 +23,23 @@ The projects are intentionally ordered. Rather than increasing technical complex
   &darr; <br />
   Production Architectures
 </p>
-<!-- Split Learning Path in next step in 2 Paths: This and a separate on Ecosystems explored -->
+<!-- Split Learning Path in next step in 2 Paths: This and a separate on Ecosystems explored; Then also in "About the Projects" split structure more explicitly into 01-03 Agent Architecture Foundations and 04-05 AI Ecosystems and Architectural Assumptions -->
 
 ### Current focus
-Exploring professional AI ecosystems and development workflows (Codex, Claude Code, GitHub). *Current work is developed on the latest `feature/*` branch before being merged into `main`.*
+Exploring professional AI ecosystems and development workflows (Codex, Claude Code, GitHub) and how their architectural assumptions differ from workflow-oriented systems such as n8n. *Current work is developed on the latest `feature/*` branch before being merged into `main`.*
 
 
 ## About the Projects
-The first three projects focus on the building blocks of AI agents and their low-code realization in n8n. The projects are designed to explore the following architectural questions while gaining hands-on experience with the underlying technologies and tooling.
+The first three projects focus on the building blocks of AI agents and their low-code realization in n8n. Starting with Project 04, the focus shifts towards understanding different AI development ecosystems and the architectural assumptions they embody.
+
+The projects are designed to explore the following architectural questions while gaining hands-on experience with the underlying technologies and tooling.
 
 | Project | Key Question                              | Focus                            |
 | ------- | ----------------------------------------- | -------------------------------- |
 | 01      | How do you connect and integrate systems? | Workflows, APIs, Tool Use        |
 | 02      | How do you organize knowledge?            | RAG, Embeddings, Vector Database |
 | 03      | How do you coordinate agents?             | Supervisor, Multi-Agent Systems  |
+| 04      | Which architectural assumptions does Codex have? | Agentic Development, Skills, MCP, Tool Use  |
 
 ### Development Philosophy
 Each project follows the same iterative process:

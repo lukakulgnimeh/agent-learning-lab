@@ -13,7 +13,7 @@ If not already done, a supervisor can ask his subagent for the weather forecast:
 Furthermore, we want to investigate how tools are used by Codex's (sub-)agent and which structure is needed to be implemented. For example in case of simple web search, external API access and how Codex handles authentication. 
 
 ## Project Structure
-Following the **commit-history**, the project is structured as follows, Codex having access only to the weather-multi-agent folder. The `experiment.md` file documents the progress of this project in detail and is the most important log for the in depth project progress and observations. This `README.md` and files in this folder summarize the most important observations.
+Following the **commit-history**, the project is structured as follows, Codex having access only to the weather-multi-agent folder. The `experiment.md` file documents the progress of this project in detail and is the most important log for the in-depth project progress and observations. The purpose of each experiment is briefly summarized in the section below. This `README.md` and files in this folder summarize the most important observations.
 
 - `README.md`
 - `decisions.md`
@@ -41,6 +41,15 @@ Following the **commit-history**, the project is structured as follows, Codex ha
     - `.gitignore` *(Experiment D: ignore .env and any other local secret files for configuration)*
     - `.env` *(Experiment D: secret key documentation)*
     - `node_modules/dotenv/..` *(Experiment D: executes .env key call inside the Node MCP process)*
+
+## Experiments
+
+The experiments progressively explore how Codex handles delegation, skills, tools, external APIs and authentication.
+
+- **Experiment A - Dynamic delegation:** Investigates whether the supervisor dynamically delegates weather-related tasks to the weather specialist when needed.
+- **Experiment B - Supervisor-subagent interaction:** Explores how responsibilities, context and information are passed between the supervisor and the delegated weather specialist.
+- **Experiment C - External API as a tool:** Investigates how an external weather API can be exposed to Codex through a custom local MCP server and how the agent uses this capability at runtime.
+- **Experiment D - Authenticated API as a custom MCP tool:** Extends the MCP approach to an authenticated API, focusing on credential handling and the separation between agent, tool interface, implementation and secrets.
 
 ## Architecture (sketch)
 

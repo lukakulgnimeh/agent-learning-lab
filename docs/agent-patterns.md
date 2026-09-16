@@ -1,6 +1,11 @@
 # Recurring Patterns in the Design of Agent Systems
 
-## 01 – Tool Selection
+### A pattern defines an intended structure and the agent may dynamically navigate within or across that structure.
+Agent patterns describe recurring architectural structures. They do not necessarily prescribe rigid execution paths. In an agentic system, a supervisor for example may dynamically deviate from an intended pattern when the current situation requires it. This makes patterns more flexible than strict workflow structures. 
+
+
+
+## 01 - Tool Selection
 
 **Problem:** Task depend on results of multiple tools. 
 
@@ -22,7 +27,7 @@
 **Limitation:** might restrict creativity for new reasoning
 
 
-## 03 – Retrieval/RAG
+## 03 - Retrieval/RAG
 
 **Problem:** The model lacks the necessary knowledge.
 
@@ -38,7 +43,7 @@
 - poor chunking strategies degrade the answers
 
 
-## 04 – Reflection
+## 04 - Reflection
 
 **Problem:** Output obviously not good.
 
@@ -49,7 +54,7 @@
 **Limitation:** potentially still believes in own previous conclusions
 
 
-## 05 – Evaluation
+## 05 - Evaluation
 
 **Problem:** Verification of Output.
 
@@ -60,11 +65,11 @@
 **Limitation:** might need a more powerful llm
 
 
-## 06 – Supervisor
+## 06 - Supervisor
 
 **Problem:** Multiple specialized tasks need to be coordinated and decisions depend on intermediate results.
 
-**Solution:** A supervisor decides which agent to call, in what order, and whether additional information is needed.
+**Solution:** A supervisor coordinates specialized capabilities and dynamically decides which agent, tool or other capabilities to call, in which order, and whether additional information is needed.
 
 **Advantages:**
 - clear responsibilities
