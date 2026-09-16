@@ -72,3 +72,15 @@ A good architecture is not only implemented, it is communicated. Design decision
 
 ### Version history documents learning, not only code.
 Meaningful commits create a narrative of architectural evolution. Version control is a record of decisions, not just file changes.
+
+### Autonomy increases flexibility but reduces predictability.
+
+### Skills guide behavior but do not define workflows.
+Introductions can establish responsibilities, constraints and preferred behavior without prescribing every execution step.
+
+### Tools are capabilities to act, not workflow nodes.
+
+### Encapsulation can separate decision-making from implementation.
+
+### A stronger model can improve results but does not remove architectural complexity.
+Challenges like orchestration, observability, interfaces and debugging remain on system level although better reasoning produces better task results.

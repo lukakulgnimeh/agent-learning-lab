@@ -1,0 +1,9 @@
+{
+  "name": "weather-multi-agent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "dotenv": "16.6.1"
+  }
+}
