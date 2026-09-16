@@ -60,14 +60,29 @@ Supervisor agent: decides to call subagent again or use wardrobe to create outpu
 
 Output to user
 
+
 ## Key Challenges
 
-During development several challenges emerged.
-
-### 1. 
+- Balancing autonomy and control: Codex can dynamically choose how to complete a task, but this makes the execution path less predictable and harder to track and debug.
+- Understanding how to translate explicit workflow concepts from n8n into concrete agent capabilities such as skills, tools, APIs and MCP servers.
+- Integrating an authenticated external API while keeping credentials outside the agent, source code and Codex configuration.
 
 ## Result
 
+- A working supervisor–subagent architecture was implemented using a reusable clothing-recommendation skill.
+- Weather access was progressively implemented through web search, a custom MCP tool and an authenticated custom MCP tool.
+- The authenticated API integration successfully kept the API key encapsulated inside the MCP server while exposing only a stable tool interface to the agent.
+
 ## Findings
 
+- Codex does not primarily execute a predefined workflow. Instead, the developer provides instructions, context and capabilities, while the agent determines much of the concrete execution path at runtime.
+- Skills constrain and guide behavior, but do not define a fixed workflow.
+- Delegation is on-demand, i.e. the supervisor can delegate when useful, reuse existing information, or adapt when a subagent is unavailable.
+- MCP provides a clear capability boundary, meaning that the agent decides when to use a tool, while the MCP server controls how the external system is accessed.
+- Compared to n8n, Codex therefore provides more execution flexibility, but with less explicit observability and more difficult debugging.
+
 ## Core Reflection
+
+The main architectural difference to n8n is the **shift from workflow definition to capability definition**. In n8n, the developer largely determines the execution path through explicitly connected nodes. In Codex, the developer defines the environment and its capabilities, while the agent decides how to combine them at runtime. 
+
+The resulting autonomy is powerful, but it also means that information flow, decision-making and debugging become less transparent.
