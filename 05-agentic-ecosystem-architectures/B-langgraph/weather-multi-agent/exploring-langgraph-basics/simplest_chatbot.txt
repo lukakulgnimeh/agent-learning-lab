@@ -1,0 +1,11 @@
+Your conversation Log:
+You: hello
+AI: Hello! How can I help you today?
+
+You: My name is Bob
+AI: Nice to meet you, Bob! What can I do for you today?
+
+You: What's my name?
+AI: Your name is Bob! You told me just a moment ago. 😊
+
+End of conversation.
