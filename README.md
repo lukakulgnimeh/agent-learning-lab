@@ -10,7 +10,9 @@ The first projects build an understanding of agent architecture from the system-
 
 ## Learning Path
 
-The projects are intentionally ordered. Rather than increasing technical complexity, each project addresses a more fundamental organizational question.
+The projects are intentionally ordered. Rather than increasing mainly in technical complexity, each phase addresses a different architectural question.
+
+### Phase 1: Agent Architecture Foundations
 
 <p align="center">
   System Integration <br />
@@ -18,19 +20,23 @@ The projects are intentionally ordered. Rather than increasing technical complex
   Knowledge Organization <br />
   &darr; <br />
   Agent Coordination <br />
-  &darr; <br />
-  Professional Development <br />
-  &darr; <br />
-  Production Architectures
 </p>
-<!-- Split Learning Path in next step in 2 Paths: This and a separate on Ecosystems explored; Then also in "About the Projects" split structure more explicitly into 01-03 Agent Architecture Foundations and 04-05 AI Ecosystems and Architectural Assumptions -->
 
-### Current focus
-Exploring professional AI ecosystems and development workflows (Codex, Claude Code, GitHub) and how their architectural assumptions differ from workflow-oriented systems such as n8n. *Current work is developed on the latest `feature/*` branch before being merged into `main`.*
+Projects 01-03 explore the basic building blocks and patterns of agent-based systems through low-code implementations in n8n.
 
+### Phase 2: AI Ecosystems and Architectural Assumptions
+
+
+<p align="center">
+  Agentic Development <br />
+  &darr; <br />
+  Ecosystem Comparison <br />
+</p>
+
+Projects 04-05 shift the focus from building agent architectures to examining how different development ecosystems structure, constrain and support them.
 
 ## About the Projects
-The first three projects focus on the building blocks of AI agents and their low-code realization in n8n. Starting with Project 04, the focus shifts towards understanding different AI development ecosystems and the architectural assumptions they embody.
+The repository therefore consists of two connected parts: foundational agent architecture and ecosystem-oriented architectural analysis. 
 
 The projects are designed to explore the following architectural questions while gaining hands-on experience with the underlying technologies and tooling.
 
@@ -40,6 +46,7 @@ The projects are designed to explore the following architectural questions while
 | 02      | How do you organize knowledge?            | RAG, Embeddings, Vector Database |
 | 03      | How do you coordinate agents?             | Supervisor, Multi-Agent Systems  |
 | 04      | Which architectural assumptions does Codex have? | Agentic Development, Skills, MCP, Tool Use  |
+| 05      | Which architectural assumptions underlie different AI development ecosystems? | Claude Code, LangGraph, State, Tool Calling, Comparison |
 
 ### Development Philosophy
 Each project follows the same iterative process:
@@ -50,7 +57,7 @@ Each iteration aims not only to build a working system, but also to continuously
 
 ## Architectural Knowledge Base
 
-Beyond the individual projects, this repository captures the reusable knowledge extracted from each iteration. Rather than documenting specific implementations, the `docs/` folder summarizes recurring architectural concepts and design principles.
+Beyond the individual projects, this repository captures the reusable knowledge extracted from each iteration. Rather than documenting specific implementations, the `docs/` folder summarizes recurring architectural concepts and design principles across technologies.
 
 | Document                    | Purpose                                                |
 | --------------------------- | ------------------------------------------------------ |
@@ -58,3 +65,11 @@ Beyond the individual projects, this repository captures the reusable knowledge 
 | **agent-patterns**          | How are these building blocks combined?                |
 | **architecture-principles** | Which design principles guide architectural decisions? |
 | **lessons-learned**         | Which insights proved reusable across projects?        |
+
+## Current Status
+
+Project 05 currently serves as a summary of the learning journey. The same problem was used to compare four different architectural approaches: n8n, Codex, Claude Code, and LangGraph.
+
+The detailed cross-ecosystem comparison is documented in `05-agentic-ecosystem-architectures/comparison.md`, while the project's final conclusions are summarized in its `README.md`. The main finding is that these ecosystems differ less in what they can build - n8n is certainly more rigid - than in where they place control between the developer, the agent and the framework.
+
+The repository is now maintained as a reference of the architectural concepts and lessons learned during this learning phase, while further development will follow future technical interests and opportunities.

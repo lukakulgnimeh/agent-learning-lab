@@ -78,9 +78,18 @@ Meaningful commits create a narrative of architectural evolution. Version contro
 ### Skills guide behavior but do not define workflows.
 Introductions can establish responsibilities, constraints and preferred behavior without prescribing every execution step.
 
-### Tools are capabilities to act, not workflow nodes.
+### Tools are capabilities to act, not workflow nodes, and can encapsulate an agent.
 
 ### Encapsulation can separate decision-making from implementation.
+
+### Conditional routing is not the same as ReAct.
+Both can use conditional edges, but the key difference is who makes the execution decision: explicit routing uses developer-defined logic, while ReAct uses model-generated tool calls.
+
+### Structured output bridges probabilistic reasoning and deterministic execution.
+A model can determine semantic values in a structured format while deterministic code remains responsible for interpreting those values and controlling execution.
+
+### Context can replace explicit memory for bounded multi-step tasks.
+An agent can complete multi-step work by passing relevant state or messages between model calls without requiring persistent memory.
 
 ### A stronger model can improve results but does not remove architectural complexity.
 Challenges like orchestration, observability, interfaces and debugging remain on system level although better reasoning produces better task results.
