@@ -67,3 +67,15 @@ Skills, tools and MCP-servers should be exposed to the agent through stable inte
 ### 17 - Autonomy is an architectural trade-off
 
 Increased autonomy and flexibility come at the cost of less deterministic execution paths and therefore higher requirements on observability, debugging and controlled interfaces.
+
+### 18 - State is an architectural interface and enables communication
+
+State defines what information components can exchange during execution and therefore shapes their responsibilities and dependencies, allowing hierarchical systems without exposing the internal implementation of the components.
+
+### 19 - Control can be distributed across architectural layers
+
+Control does not have to belong entirely to either the developer or the agent. Routing, tool selection, agent composition and framework behavior can each be controlled at different layers.
+
+### 20 - Abstraction hides architecture but does not remove it
+
+Higher-level abstractions can reduce implementation, while the underlying architectural structure still exists.
